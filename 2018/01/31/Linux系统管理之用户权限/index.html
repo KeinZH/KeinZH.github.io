@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="linux," />
+  <meta name="keywords" content="Linux," />
 
 
 
@@ -80,18 +80,27 @@
 
 
 
-<meta name="description" content="为各版本linux添加yum源这里我就以Centos 6.5 来做演示 首先先百度下对应版本的yun源 国内比较好的yum源主要是阿里云、163以及搜狐的，更新yum的命令如下： 123456789//更新为阿里云的源wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo//更新为">
-<meta name="keywords" content="linux">
+<meta name="description" content="当我们用root用户登陆linux时候 会显示一些信息root@localhost 意思是 当前登陆用户为root localhost是这台linux的主机名~ 是当前的用户目录 那后面的#是什么意思呢？ #号是当前用户具有管理员权限管理员是当前系统最高权限的用户我们新建一个用户为Han切换到Han用户 发现之前显示的#号变成了$这是因为我们用useradd命令创建的用户默认为普通用户那系统是怎么">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="为各版本linux添加yum源">
-<meta property="og:url" content="https://hanq.github.io/2018/01/28/为各版本linux添加yum源/index.html">
+<meta property="og:title" content="Linux系统管理之用户权限">
+<meta property="og:url" content="https://hanq.github.io/2018/01/31/Linux系统管理之用户权限/index.html">
 <meta property="og:site_name" content="Han&#39;s Blog">
-<meta property="og:description" content="为各版本linux添加yum源这里我就以Centos 6.5 来做演示 首先先百度下对应版本的yun源 国内比较好的yum源主要是阿里云、163以及搜狐的，更新yum的命令如下： 123456789//更新为阿里云的源wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo//更新为">
+<meta property="og:description" content="当我们用root用户登陆linux时候 会显示一些信息root@localhost 意思是 当前登陆用户为root localhost是这台linux的主机名~ 是当前的用户目录 那后面的#是什么意思呢？ #号是当前用户具有管理员权限管理员是当前系统最高权限的用户我们新建一个用户为Han切换到Han用户 发现之前显示的#号变成了$这是因为我们用useradd命令创建的用户默认为普通用户那系统是怎么">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-28T06:50:10.081Z">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201801/31/4fa7958e09cea14e5adf83065ad56925.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201801/31/b0b68f8e3dc706679aee8c1b3373eccd.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201801/31/d34a64989faea45adc1d210a175284eb.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201801/31/e3cfcdec58526837ae8ca985d4e98b9d.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201801/31/a1bb5ff4bd3939b2723bc615843b31ad.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201801/31/5b37cf3f1c2292a1b504a27a222e7a9a.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201801/31/672983451e8ec355df80c783c1b49132.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201801/31/be84c731f8a2f94e594625ce047a4cd4.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:updated_time" content="2018-07-14T03:37:05.461Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="为各版本linux添加yum源">
-<meta name="twitter:description" content="为各版本linux添加yum源这里我就以Centos 6.5 来做演示 首先先百度下对应版本的yun源 国内比较好的yum源主要是阿里云、163以及搜狐的，更新yum的命令如下： 123456789//更新为阿里云的源wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo//更新为">
+<meta name="twitter:title" content="Linux系统管理之用户权限">
+<meta name="twitter:description" content="当我们用root用户登陆linux时候 会显示一些信息root@localhost 意思是 当前登陆用户为root localhost是这台linux的主机名~ 是当前的用户目录 那后面的#是什么意思呢？ #号是当前用户具有管理员权限管理员是当前系统最高权限的用户我们新建一个用户为Han切换到Han用户 发现之前显示的#号变成了$这是因为我们用useradd命令创建的用户默认为普通用户那系统是怎么">
+<meta name="twitter:image" content="http://i2.51cto.com/images/blog/201801/31/4fa7958e09cea14e5adf83065ad56925.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
 
 
 
@@ -121,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://hanq.github.io/2018/01/28/为各版本linux添加yum源/"/>
+  <link rel="canonical" href="https://hanq.github.io/2018/01/31/Linux系统管理之用户权限/"/>
 
 
 
 
 
-  <title>为各版本linux添加yum源 | Han's Blog</title>
+  <title>Linux系统管理之用户权限 | Han's Blog</title>
   
 
 
@@ -254,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hanq.github.io/2018/01/28/为各版本linux添加yum源/">
+    <link itemprop="mainEntityOfPage" href="https://hanq.github.io/2018/01/31/Linux系统管理之用户权限/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Han">
@@ -271,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">为各版本linux添加yum源</h1>
+          <h1 class="post-title" itemprop="name headline">Linux系统管理之用户权限</h1>
         
 
         <div class="post-meta">
@@ -283,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T10:00:52+08:00">
-                2018-01-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-31T15:08:52+08:00">
+                2018-01-31
               </time>
             
 
@@ -306,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -323,7 +332,7 @@
 
           
           
-             <span id="/2018/01/28/为各版本linux添加yum源/" class="leancloud_visitors" data-flag-title="为各版本linux添加yum源">
+             <span id="/2018/01/31/Linux系统管理之用户权限/" class="leancloud_visitors" data-flag-title="Linux系统管理之用户权限">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -351,7 +360,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  234字
+                  658字
                 </span>
               
 
@@ -367,7 +376,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1分钟
+                  2分钟
                 </span>
               
             </div>
@@ -388,17 +397,15 @@
       
 
       
-        <h1 id="为各版本linux添加yum源"><a href="#为各版本linux添加yum源" class="headerlink" title="为各版本linux添加yum源"></a>为各版本linux添加yum源</h1><p>这里我就以Centos 6.5 来做演示 首先先百度下对应版本的yun源</p>
-<p>国内比较好的yum源主要是阿里云、163以及搜狐的，更新yum的命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//更新为阿里云的源</span><br><span class="line"></span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo</span><br><span class="line"></span><br><span class="line">//更新为163的源</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS6-Base-163.repo</span><br><span class="line"></span><br><span class="line">//更新为搜狐的源</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.sohu.com/help/CentOS-Base-sohu.repo</span><br></pre></td></tr></table></figure>
-<p>1.进入yum源配置目录</p>
-<pre><code>cd /etc/yum.repos.d
-</code></pre><p>2.做什么改动前最后都做个备份 以防出错 还能恢复</p>
-<pre><code>mv CentOS-Base.repo CentOS-Base.repo.bak
-</code></pre><p>3.下载新的CentOS-Base.repo 到/etc/yum.repos.d/</p>
-<pre><code>wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
-</code></pre><p>4.运行yum makecache生成缓存</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+        <p>当我们用root用户登陆linux时候 会显示一些信息<img src="http://i2.51cto.com/images/blog/201801/31/4fa7958e09cea14e5adf83065ad56925.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>root@localhost 意思是 当前登陆用户为root localhost是这台linux的主机名<br>~ 是当前的用户目录 那后面的#是什么意思呢？</p>
+<p>#号是当前用户具有管理员权限<br>管理员是当前系统最高权限的用户<br><img src="http://i2.51cto.com/images/blog/201801/31/b0b68f8e3dc706679aee8c1b3373eccd.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>我们新建一个用户为Han<br><img src="http://i2.51cto.com/images/blog/201801/31/d34a64989faea45adc1d210a175284eb.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>切换到Han用户 发现之前显示的#号变成了$<br>这是因为我们用useradd命令创建的用户默认为普通用户<br>那系统是怎么分别用户是管理员用户还是普通用户呢？<br><img src="http://i2.51cto.com/images/blog/201801/31/e3cfcdec58526837ae8ca985d4e98b9d.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>系统是用UID(User IDentification)即用户标识符来分别用户的身份<br>在RHEL7中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">管理UID为0：系统的管理员用户</span><br><span class="line">系统用户UID为1~999：默认是无法登陆系统</span><br><span class="line">普通用户UID为1000开始：适用于日常工作的用户</span><br></pre></td></tr></table></figure></p>
+<p>linux是一个多用户、多任务的操作系统<br>除了UID还有GID（组身份标识符）<br>如果用户很多权限又都一样时，我们可以将用户规划到一个工作组，这样可以同一规划权限。<br>                                    一些常用的用户和用户组命令<br>useradd命令（创建用户）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-d                   指定用户的家目录默认（/home/user）</span><br><span class="line">-e                   账户的到期时间 格式为 YYYY—MM—DD</span><br><span class="line">-g                   指定用户属于的用户组</span><br><span class="line">-u                   指定用户的UID</span><br><span class="line">-s                   指定用户登入后所使用的shell（默认是/bash/shell，指定 /sbin/nologin则该用户不能登陆）</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://i2.51cto.com/images/blog/201801/31/a1bb5ff4bd3939b2723bc615843b31ad.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>每创建一个用户时系统会自动创建一个同名的用户组<br><img src="http://i2.51cto.com/images/blog/201801/31/5b37cf3f1c2292a1b504a27a222e7a9a.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>userdel（删除用户）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-f                  强制删除用户                             </span><br><span class="line">-r                  删除用户和组并且删除用户的家目录和邮件通知目录</span><br></pre></td></tr></table></figure></p>
+<p>usermod（更改用户权限）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-d 　             修改用户登入时的目录</span><br><span class="line">-e 　             修改帐号的有效期限</span><br><span class="line">-g 　             修改用户所属的群组</span><br><span class="line">-u 　             修改用户UID</span><br><span class="line">-l　               修改用户帐号名称</span><br><span class="line">-L 　             锁定用户密码，使密码无效</span><br><span class="line">-s　              修改用户登入后所使用的shell</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://i2.51cto.com/images/blog/201801/31/672983451e8ec355df80c783c1b49132.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""></p>
+<p>#如果遇到currently userd by processes 可能是要修改的用户已经登陆 先退出登陆的用户再用 root 用户修改<br>passwd（修改用户密码等）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--stdin           使用标准输入修改密码例如 echo &quot;123456&quot; | passwd --stdin username</span><br><span class="line">-d                  用户可用空密码登陆系统</span><br><span class="line">-S                 列出密码的相关信息，以及密码的加密算法名称</span><br><span class="line">-l                   锁住用户，禁止登陆</span><br><span class="line">-u                  解开已锁住的用户</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://i2.51cto.com/images/blog/201801/31/be84c731f8a2f94e594625ce047a4cd4.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""></p>
+
       
     </div>
     
@@ -439,7 +446,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
           
         </div>
       
@@ -452,8 +459,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/27/Centos6.5下 PXE+Kickstart无人值守安装/" rel="next" title="Centos6.5下 PXE+Kickstart无人值守安装">
-                <i class="fa fa-chevron-left"></i> Centos6.5下 PXE+Kickstart无人值守安装
+              <a href="/2018/01/31/RHEL7Centos7 root密码破解/" rel="next" title="RHEL7/Centos7 root密码破解">
+                <i class="fa fa-chevron-left"></i> RHEL7/Centos7 root密码破解
               </a>
             
           </div>
@@ -462,8 +469,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/28/Centos6.5安装kvm虚拟化/" rel="prev" title="Centos6.5安装kvm虚拟化">
-                Centos6.5安装kvm虚拟化 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/02/Centos7下详细搭建FTP站点/" rel="prev" title="Centos7下详细搭建FTP站点">
+                Centos7下详细搭建FTP站点 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -516,17 +523,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -642,22 +640,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为各版本linux添加yum源"><span class="nav-number">1.</span> <span class="nav-text">为各版本linux添加yum源</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
