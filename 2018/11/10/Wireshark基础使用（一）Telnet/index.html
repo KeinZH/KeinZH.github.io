@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="Linux," />
+  <meta name="keywords" content="内网渗透," />
 
 
 
@@ -80,27 +80,41 @@
 
 
 
-<meta name="description" content="当我们用root用户登陆linux时候 会显示一些信息root@localhost 意思是 当前登陆用户为root localhost是这台linux的主机名~ 是当前的用户目录 那后面的#是什么意思呢？ #号是当前用户具有管理员权限管理员是当前系统最高权限的用户我们新建一个用户为Han切换到Han用户 发现之前显示的#号变成了$这是因为我们用useradd命令创建的用户默认为普通用户那系统是怎么">
-<meta name="keywords" content="Linux">
+<meta name="description" content="Wireshark简介 Wireshark（前称Ethereal）是一个免费开源的网上数据包分析软件。网上数据包分析软件的功能是截取网上数据包，并尽可能显示出最为详细的网上数据包数据。在过去，网上数据包分析软件是非常昂贵，或是专门属于营利用的软件，Wireshark的出现改变了这一切。在GNU通用公共许可证的保障范围底下，用户可以以免费的代价获取软件与其代码，并拥有针对其源代码修改及定制的权利。W">
+<meta name="keywords" content="内网渗透">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux系统管理之用户权限">
-<meta property="og:url" content="https://hanq.github.io/2018/01/31/Linux系统管理之用户权限/index.html">
+<meta property="og:title" content="Wireshark基础使用（一）Telnet">
+<meta property="og:url" content="https://hanq.github.io/2018/11/10/Wireshark基础使用（一）Telnet/index.html">
 <meta property="og:site_name" content="Han&#39;s Blog">
-<meta property="og:description" content="当我们用root用户登陆linux时候 会显示一些信息root@localhost 意思是 当前登陆用户为root localhost是这台linux的主机名~ 是当前的用户目录 那后面的#是什么意思呢？ #号是当前用户具有管理员权限管理员是当前系统最高权限的用户我们新建一个用户为Han切换到Han用户 发现之前显示的#号变成了$这是因为我们用useradd命令创建的用户默认为普通用户那系统是怎么">
+<meta property="og:description" content="Wireshark简介 Wireshark（前称Ethereal）是一个免费开源的网上数据包分析软件。网上数据包分析软件的功能是截取网上数据包，并尽可能显示出最为详细的网上数据包数据。在过去，网上数据包分析软件是非常昂贵，或是专门属于营利用的软件，Wireshark的出现改变了这一切。在GNU通用公共许可证的保障范围底下，用户可以以免费的代价获取软件与其代码，并拥有针对其源代码修改及定制的权利。W">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://i2.51cto.com/images/blog/201801/31/4fa7958e09cea14e5adf83065ad56925.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
-<meta property="og:image" content="http://i2.51cto.com/images/blog/201801/31/b0b68f8e3dc706679aee8c1b3373eccd.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
-<meta property="og:image" content="http://i2.51cto.com/images/blog/201801/31/d34a64989faea45adc1d210a175284eb.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
-<meta property="og:image" content="http://i2.51cto.com/images/blog/201801/31/e3cfcdec58526837ae8ca985d4e98b9d.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
-<meta property="og:image" content="http://i2.51cto.com/images/blog/201801/31/a1bb5ff4bd3939b2723bc615843b31ad.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
-<meta property="og:image" content="http://i2.51cto.com/images/blog/201801/31/5b37cf3f1c2292a1b504a27a222e7a9a.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
-<meta property="og:image" content="http://i2.51cto.com/images/blog/201801/31/672983451e8ec355df80c783c1b49132.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
-<meta property="og:image" content="http://i2.51cto.com/images/blog/201801/31/be84c731f8a2f94e594625ce047a4cd4.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
-<meta property="og:updated_time" content="2018-07-14T03:37:05.461Z">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/0c3b2a0a5e03cb2be2d40e6c7f81362f.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/23ad51ffeb77fcd6b57dbe333f1ebde9.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/af5137dda48e92c4a7a664e524db7a59.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/665bca8309b0687274a5f2ad85b70b05.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/a57735845ed77907029650eaa0c36a2e.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/9bfceda942500b18986929b23b9fa91d.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/6f1e422b603446df7ba3f3d80121b901.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/c024b67a0c14bbc5340d0a2ad1d056e5.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/4bdb59b90ebecba5df980847aa73050b.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/e6cf8d2b8c7c7037552d64cc4c1f28b2.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/fb64e5b7d5ee53cca49ab7e0165d4aa7.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/b4feabb4d24d9452b00c610166841a02.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/55a41bcb038025393bf9e82b6702320d.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/ecb6c7a7428e5d8e52414b3420a1af9a.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/f8dfe1b830bfb08aa59c1fd561830e42.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/1b92d4ab20c35174626180a742f3dd20.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/3b7cfef98655cfe11cf90ae5e0cdc794.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/07673a6cd7e7d3cb794e3c1211dd2a25.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/442f619d7ced598eda1b63d47b0dd1dd.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/97f4a34f25678f7594aa5e2f58326b70.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/811d51ac097fb1e1bebea7849d92137a.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:image" content="http://i2.51cto.com/images/blog/201811/10/50ca6bf9e2ca359351e93e388678ce06.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta property="og:updated_time" content="2018-11-10T13:19:20.419Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux系统管理之用户权限">
-<meta name="twitter:description" content="当我们用root用户登陆linux时候 会显示一些信息root@localhost 意思是 当前登陆用户为root localhost是这台linux的主机名~ 是当前的用户目录 那后面的#是什么意思呢？ #号是当前用户具有管理员权限管理员是当前系统最高权限的用户我们新建一个用户为Han切换到Han用户 发现之前显示的#号变成了$这是因为我们用useradd命令创建的用户默认为普通用户那系统是怎么">
-<meta name="twitter:image" content="http://i2.51cto.com/images/blog/201801/31/4fa7958e09cea14e5adf83065ad56925.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
+<meta name="twitter:title" content="Wireshark基础使用（一）Telnet">
+<meta name="twitter:description" content="Wireshark简介 Wireshark（前称Ethereal）是一个免费开源的网上数据包分析软件。网上数据包分析软件的功能是截取网上数据包，并尽可能显示出最为详细的网上数据包数据。在过去，网上数据包分析软件是非常昂贵，或是专门属于营利用的软件，Wireshark的出现改变了这一切。在GNU通用公共许可证的保障范围底下，用户可以以免费的代价获取软件与其代码，并拥有针对其源代码修改及定制的权利。W">
+<meta name="twitter:image" content="http://i2.51cto.com/images/blog/201811/10/0c3b2a0a5e03cb2be2d40e6c7f81362f.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=">
 
 
 
@@ -130,13 +144,13 @@
 
 
 
-  <link rel="canonical" href="https://hanq.github.io/2018/01/31/Linux系统管理之用户权限/"/>
+  <link rel="canonical" href="https://hanq.github.io/2018/11/10/Wireshark基础使用（一）Telnet/"/>
 
 
 
 
 
-  <title>Linux系统管理之用户权限 | Han's Blog</title>
+  <title>Wireshark基础使用（一）Telnet | Han's Blog</title>
   
 
 
@@ -263,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hanq.github.io/2018/01/31/Linux系统管理之用户权限/">
+    <link itemprop="mainEntityOfPage" href="https://hanq.github.io/2018/11/10/Wireshark基础使用（一）Telnet/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Han">
@@ -280,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux系统管理之用户权限</h1>
+          <h1 class="post-title" itemprop="name headline">Wireshark基础使用（一）Telnet</h1>
         
 
         <div class="post-meta">
@@ -292,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-31T15:08:52+08:00">
-                2018-01-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-10T21:08:52+08:00">
+                2018-11-10
               </time>
             
 
@@ -315,8 +329,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/内网渗透/" itemprop="url" rel="index">
+                    <span itemprop="name">内网渗透</span>
                   </a>
                 </span>
 
@@ -332,7 +346,7 @@
 
           
           
-             <span id="/2018/01/31/Linux系统管理之用户权限/" class="leancloud_visitors" data-flag-title="Linux系统管理之用户权限">
+             <span id="/2018/11/10/Wireshark基础使用（一）Telnet/" class="leancloud_visitors" data-flag-title="Wireshark基础使用（一）Telnet">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -360,7 +374,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  658字
+                  528字
                 </span>
               
 
@@ -397,14 +411,19 @@
       
 
       
-        <p>当我们用root用户登陆linux时候 会显示一些信息<img src="http://i2.51cto.com/images/blog/201801/31/4fa7958e09cea14e5adf83065ad56925.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>root@localhost 意思是 当前登陆用户为root localhost是这台linux的主机名<br>~ 是当前的用户目录 那后面的#是什么意思呢？</p>
-<p>#号是当前用户具有管理员权限<br>管理员是当前系统最高权限的用户<br><img src="http://i2.51cto.com/images/blog/201801/31/b0b68f8e3dc706679aee8c1b3373eccd.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>我们新建一个用户为Han<br><img src="http://i2.51cto.com/images/blog/201801/31/d34a64989faea45adc1d210a175284eb.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>切换到Han用户 发现之前显示的#号变成了$<br>这是因为我们用useradd命令创建的用户默认为普通用户<br>那系统是怎么分别用户是管理员用户还是普通用户呢？<br><img src="http://i2.51cto.com/images/blog/201801/31/e3cfcdec58526837ae8ca985d4e98b9d.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>系统是用UID(User IDentification)即用户标识符来分别用户的身份<br>在RHEL7中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">管理UID为0：系统的管理员用户</span><br><span class="line">系统用户UID为1~999：默认是无法登陆系统</span><br><span class="line">普通用户UID为1000开始：适用于日常工作的用户</span><br></pre></td></tr></table></figure></p>
-<p>linux是一个多用户、多任务的操作系统<br>除了UID还有GID（组身份标识符）<br>如果用户很多权限又都一样时，我们可以将用户规划到一个工作组，这样可以同一规划权限。<br>                                    一些常用的用户和用户组命令<br>useradd命令（创建用户）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-d                   指定用户的家目录默认（/home/user）</span><br><span class="line">-e                   账户的到期时间 格式为 YYYY—MM—DD</span><br><span class="line">-g                   指定用户属于的用户组</span><br><span class="line">-u                   指定用户的UID</span><br><span class="line">-s                   指定用户登入后所使用的shell（默认是/bash/shell，指定 /sbin/nologin则该用户不能登陆）</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://i2.51cto.com/images/blog/201801/31/a1bb5ff4bd3939b2723bc615843b31ad.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>每创建一个用户时系统会自动创建一个同名的用户组<br><img src="http://i2.51cto.com/images/blog/201801/31/5b37cf3f1c2292a1b504a27a222e7a9a.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>userdel（删除用户）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-f                  强制删除用户                             </span><br><span class="line">-r                  删除用户和组并且删除用户的家目录和邮件通知目录</span><br></pre></td></tr></table></figure></p>
-<p>usermod（更改用户权限）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-d 　             修改用户登入时的目录</span><br><span class="line">-e 　             修改帐号的有效期限</span><br><span class="line">-g 　             修改用户所属的群组</span><br><span class="line">-u 　             修改用户UID</span><br><span class="line">-l　               修改用户帐号名称</span><br><span class="line">-L 　             锁定用户密码，使密码无效</span><br><span class="line">-s　              修改用户登入后所使用的shell</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://i2.51cto.com/images/blog/201801/31/672983451e8ec355df80c783c1b49132.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""></p>
-<p>#如果遇到currently userd by processes 可能是要修改的用户已经登陆 先退出登陆的用户再用 root 用户修改<br>passwd（修改用户密码等）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--stdin           使用标准输入修改密码例如 echo &quot;123456&quot; | passwd --stdin username</span><br><span class="line">-d                  用户可用空密码登陆系统</span><br><span class="line">-S                 列出密码的相关信息，以及密码的加密算法名称</span><br><span class="line">-l                   锁住用户，禁止登陆</span><br><span class="line">-u                  解开已锁住的用户</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://i2.51cto.com/images/blog/201801/31/be84c731f8a2f94e594625ce047a4cd4.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""></p>
+        <h1 id="Wireshark简介"><a href="#Wireshark简介" class="headerlink" title="Wireshark简介"></a>Wireshark简介</h1><blockquote>
+<p>Wireshark（前称Ethereal）是一个免费开源的网上数据包分析软件。网上数据包分析软件的功能是截取网上数据包，并尽可能显示出最为详细的网上数据包数据。在过去，网上数据包分析软件是非常昂贵，或是专门属于营利用的软件，Wireshark的出现改变了这一切。在GNU通用公共许可证的保障范围底下，用户可以以免费的代价获取软件与其代码，并拥有针对其源代码修改及定制的权利。Wireshark是目前全世界最广泛的网上数据包分析软件之一。—— <a href="https://zh.m.wikipedia.org/zh-cn/Wireshark" target="_blank" rel="noopener">维基百科</a></p>
+</blockquote>
+<p>这里我们使用kali内置的Wireshark 2.4.3<br><img src="http://i2.51cto.com/images/blog/201811/10/0c3b2a0a5e03cb2be2d40e6c7f81362f.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>选择eth0网卡<br><img src="http://i2.51cto.com/images/blog/201811/10/23ad51ffeb77fcd6b57dbe333f1ebde9.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>过滤器设置只显示icmp协议的数据包<br><img src="http://i2.51cto.com/images/blog/201811/10/af5137dda48e92c4a7a664e524db7a59.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>用实验机ping kali<br><img src="http://i2.51cto.com/images/blog/201811/10/665bca8309b0687274a5f2ad85b70b05.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt="">可以看到Wireshark已经捕获到了数据包<br><img src="http://i2.51cto.com/images/blog/201811/10/a57735845ed77907029650eaa0c36a2e.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>可以看出实验机向kali发出了三个ttl=128icmp请求包，kali依次回复了三个ttl=64的icmp回复</p>
+<h1 id="下面我们用Wireshark抓tcp的三次握手包"><a href="#下面我们用Wireshark抓tcp的三次握手包" class="headerlink" title="下面我们用Wireshark抓tcp的三次握手包"></a>下面我们用Wireshark抓tcp的三次握手包</h1><p><img src="http://i2.51cto.com/images/blog/201811/10/9bfceda942500b18986929b23b9fa91d.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>首先我们在WIN7上开启Telnet功能,并启动Telnet服务<br><img src="http://i2.51cto.com/images/blog/201811/10/6f1e422b603446df7ba3f3d80121b901.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>开始抓tcp协议的数据包<br><img src="http://i2.51cto.com/images/blog/201811/10/c024b67a0c14bbc5340d0a2ad1d056e5.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>在kali上Telnet到Win7<br><img src="http://i2.51cto.com/images/blog/201811/10/4bdb59b90ebecba5df980847aa73050b.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""></p>
+<p><img src="http://i2.51cto.com/images/blog/201811/10/e6cf8d2b8c7c7037552d64cc4c1f28b2.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>前面三个数据包为kali与Win7建立tcp三次握手过程<br><img src="http://i2.51cto.com/images/blog/201811/10/fb64e5b7d5ee53cca49ab7e0165d4aa7.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>TCP第一次握手<br><img src="http://i2.51cto.com/images/blog/201811/10/b4feabb4d24d9452b00c610166841a02.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>TCP第二次握手<br><img src="http://i2.51cto.com/images/blog/201811/10/55a41bcb038025393bf9e82b6702320d.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>TCP第三次握手<br>TCP连接建立之后，服务端与客户端互相交换一些信息，包括服务端的配置信息，主机的应答等等…<br><img src="http://i2.51cto.com/images/blog/201811/10/ecb6c7a7428e5d8e52414b3420a1af9a.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>当双方信息得到确认之后，服务端发送欢迎信息<br><img src="http://i2.51cto.com/images/blog/201811/10/f8dfe1b830bfb08aa59c1fd561830e42.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br><img src="http://i2.51cto.com/images/blog/201811/10/1b92d4ab20c35174626180a742f3dd20.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>login:\n 登录输入</p>
+<p><img src="http://i2.51cto.com/images/blog/201811/10/3b7cfef98655cfe11cf90ae5e0cdc794.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""></p>
+<p><img src="http://i2.51cto.com/images/blog/201811/10/07673a6cd7e7d3cb794e3c1211dd2a25.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""></p>
+<p>客户端输入一个字符就发送一个Telnet报文，然后服务端返回一个应答，之后客户端发送一个TCP报文<br><img src="http://i2.51cto.com/images/blog/201811/10/442f619d7ced598eda1b63d47b0dd1dd.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>回车之后 服务端返回password:<br><img src="http://i2.51cto.com/images/blog/201811/10/97f4a34f25678f7594aa5e2f58326b70.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>客户端输入密码</p>
+<blockquote>
+<p>为什么说Telnet不安全就体现在这里，因为Telnet采用明文传输 很容易捕获到账号密码</p>
+</blockquote>
+<p><img src="http://i2.51cto.com/images/blog/201811/10/811d51ac097fb1e1bebea7849d92137a.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>登录成功连接到服务端(Win7)<br><img src="http://i2.51cto.com/images/blog/201811/10/50ca6bf9e2ca359351e93e388678ce06.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt=""><br>查看Win7用户 我们可以在Wireshark中看到所有明文信息</p>
 
       
     </div>
@@ -446,7 +465,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+            <a href="/tags/内网渗透/" rel="tag"><i class="fa fa-tag"></i> 内网渗透</a>
           
         </div>
       
@@ -459,8 +478,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/31/RHEL7Centos7 root密码破解/" rel="next" title="RHEL7/Centos7 root密码破解">
-                <i class="fa fa-chevron-left"></i> RHEL7/Centos7 root密码破解
+              <a href="/2018/08/24/CVE-2018-8120 Win7 2008提权漏洞/" rel="next" title="CVE-2018-8120 Win7 2008提权漏洞">
+                <i class="fa fa-chevron-left"></i> CVE-2018-8120 Win7 2008提权漏洞
               </a>
             
           </div>
@@ -468,10 +487,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/02/Centos7下详细搭建FTP站点/" rel="prev" title="Centos7下详细搭建FTP站点">
-                Centos7下详细搭建FTP站点 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -523,8 +538,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -640,6 +664,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Wireshark简介"><span class="nav-number">1.</span> <span class="nav-text">Wireshark简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下面我们用Wireshark抓tcp的三次握手包"><span class="nav-number">2.</span> <span class="nav-text">下面我们用Wireshark抓tcp的三次握手包</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
