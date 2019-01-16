@@ -99,7 +99,7 @@
 <meta property="og:image" content="https://ww1.sinaimg.cn/large/007rAy9hgy1fz7k9gg28wj30nk0e5alf.jpg">
 <meta property="og:image" content="https://ww1.sinaimg.cn/large/007rAy9hgy1fz7k9ulvx5j30le0fe40x.jpg">
 <meta property="og:image" content="https://ww1.sinaimg.cn/large/007rAy9hgy1fz7kac1howj30r30h5k5i.jpg">
-<meta property="og:updated_time" content="2019-01-15T13:02:40.602Z">
+<meta property="og:updated_time" content="2019-01-16T01:40:49.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ARP断网&#x2F;欺骗">
 <meta name="twitter:description" content="ARP简介如果要在TCP/IP协议栈中选择一个”最不安全的协议”，那么我会毫不犹豫把票投给ARP协议。我们经常听到的这些术语，包括”网络扫描”、”内网渗透”、”中间人拦截”、”局域网流控”、”流量欺骗”，基本都跟ARP脱不了干系。大量的安全工具，例如大名鼎鼎的Cain、功能完备的Ettercap、操作傻瓜式的P2P终结者，底层都要基于ARP实现。听上去这么”逆天”的协议，其实技术原理又简单的难以置">
@@ -363,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  413字
+                  411字
                 </span>
               
 
@@ -402,8 +402,8 @@
       
         <h1 id="ARP简介"><a href="#ARP简介" class="headerlink" title="ARP简介"></a>ARP简介</h1><p>如果要在TCP/IP协议栈中选择一个”最不安全的协议”，那么我会毫不犹豫把票投给ARP协议。我们经常听到的这些术语，包括”网络扫描”、”内网渗透”、”中间人拦截”、”局域网流控”、”流量欺骗”，基本都跟ARP脱不了干系。大量的安全工具，例如大名鼎鼎的Cain、功能完备的Ettercap、操作傻瓜式的P2P终结者，底层都要基于ARP实现。<br>听上去这么”逆天”的协议，其实技术原理又简单的难以置信，例如ARP整个完整交互过程仅需要两个包，一问一答即可搞定！<br>——<a href="https://ww1.sinaimg.cn/large/007rAy9hgy1fz7k7df3kmj30eg0c0mx4.jpg" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28771785</a></p>
 <p>KALI:<br>192.168.247.153(ip)<br>192.168.247.255(broadcast)<br>Windows:<br>192.168.247.129(ip)<br>192.168.247.2(gateway)</p>
-<h1 id="1-断网攻击"><a href="#1-断网攻击" class="headerlink" title="1.断网攻击"></a>1.断网攻击</h1><p>断网原理：kali替换交换机网关接收windows的包且经过到kali的网卡，包不会从网关出去还给windows。<br><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fz7k7df3kmj30eg0c0mx4.jpg" alt="enter description here"><br>Arpspoof -i eth0(kali的网卡)-t ip(windows的ip) (windows的网关)<br><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fz7k7vg00ej30nm0bk7e7.jpg" alt="enter description here"><br>效果图：<br><img src="https://ww1.sinaimg.cn/large/007rAy9hly1fz7k8mgmfsj30ma08tmy4.jpg" alt="enter description here"><br>这样windows不能上网，发给交换机的包被kali截取。</p>
-<h1 id="2-欺骗攻击"><a href="#2-欺骗攻击" class="headerlink" title="2.欺骗攻击"></a>2.欺骗攻击</h1><p>arp欺骗原理：kali使用广播网关接收windows的包且经过到kali的网卡，包会从网关出去还给windows。<br><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fz7k8zjiw9j30eg0c0gll.jpg" alt="enter description here"><br>Arpspoof -i eth0(kali的网卡)-t ip(windows的ip) (kali的网关)<br><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fz7k9gg28wj30nk0e5alf.jpg" alt="enter description here"><br>效果图：<br><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fz7k9ulvx5j30le0fe40x.jpg" alt="enter description here"><br>可以上网，点击图片。<br><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fz7kac1howj30r30h5k5i.jpg" alt="enter description here"><br>使kali获取windows的浏览图片。</p>
+<h1 id="断网攻击"><a href="#断网攻击" class="headerlink" title="断网攻击"></a>断网攻击</h1><p>断网原理：kali替换交换机网关接收windows的包且经过到kali的网卡，包不会从网关出去还给windows。<br><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fz7k7df3kmj30eg0c0mx4.jpg" alt="enter description here"><br>Arpspoof -i eth0(kali的网卡)-t ip(windows的ip) (windows的网关)<br><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fz7k7vg00ej30nm0bk7e7.jpg" alt="enter description here"><br>效果图：<br><img src="https://ww1.sinaimg.cn/large/007rAy9hly1fz7k8mgmfsj30ma08tmy4.jpg" alt="enter description here"><br>这样windows不能上网，发给交换机的包被kali截取。</p>
+<h1 id="欺骗攻击"><a href="#欺骗攻击" class="headerlink" title="欺骗攻击"></a>欺骗攻击</h1><p>arp欺骗原理：kali使用广播网关接收windows的包且经过到kali的网卡，包会从网关出去还给windows。<br><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fz7k8zjiw9j30eg0c0gll.jpg" alt="enter description here"><br>Arpspoof -i eth0(kali的网卡)-t ip(windows的ip) (kali的网关)<br><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fz7k9gg28wj30nk0e5alf.jpg" alt="enter description here"><br>效果图：<br><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fz7k9ulvx5j30le0fe40x.jpg" alt="enter description here"><br>可以上网，点击图片。<br><img src="https://ww1.sinaimg.cn/large/007rAy9hgy1fz7kac1howj30r30h5k5i.jpg" alt="enter description here"><br>使kali获取windows的浏览图片。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>上述为kali自带的工具，有兴趣的朋友可以试下python的毒化和泛洪。</p>
 <hr>
 <p>本文是转载@Kein的文章，如需转载，请注明出处。否则我将会顺着网线锤烂你！<br>Kein’s Blog: <a href="https://kkkein.top">https://kkkein.top</a></p>
@@ -632,7 +632,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ARP简介"><span class="nav-number">1.</span> <span class="nav-text">ARP简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-断网攻击"><span class="nav-number">2.</span> <span class="nav-text">1.断网攻击</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-欺骗攻击"><span class="nav-number">3.</span> <span class="nav-text">2.欺骗攻击</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ARP简介"><span class="nav-number">1.</span> <span class="nav-text">ARP简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#断网攻击"><span class="nav-number">2.</span> <span class="nav-text">断网攻击</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#欺骗攻击"><span class="nav-number">3.</span> <span class="nav-text">欺骗攻击</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
